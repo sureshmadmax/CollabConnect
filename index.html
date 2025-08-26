@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollabConnect | Find Local Professionals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Maps API with Places Autocomplete -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADFCTTRkVjq3_LqZKqZzwupSDunjUWHcE&libraries=places&callback=initMap" async defer></script>
+    <script src="script.js"></script>
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navbar -->
+    <header class="bg-white shadow sticky top-0 z-50 rounded-b-xl">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold text-gray-900">CollabConnect</a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#how-it-works" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">How it Works</a>
+                <a href="#professionals" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Professionals</a>
+                <a href="#map-section" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Find on Map</a>
+               
+                <!--<a href="#" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Add professional</a>-->
+                 <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-600 transition-colors">Join as a Pro</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full py-4 px-4 text-center">
+            <a href="#how-it-works" class="nav-link block py-2 text-gray-600 hover:text-blue-500">How it Works</a>
+            <a href="#professionals" class="nav-link block py-2 text-gray-600 hover:text-blue-500">Professionals</a>
+            <a href="#map-section" class="nav-link block py-2 text-gray-600 hover:text-blue-500">Find on Map</a>
+            <a href="#" class="block py-2 mt-2 bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-600">Join as a Pro</a>
+        </div>
+
+        <!-- Add New Professional Button -->
+<div class="container mx-auto px-4 py-12 text-center">
+    <a href="add-professional.html" class="bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition-colors inline-block">
+        + Add New Professional
+    </a>
+</div>
+
+
+<!-- Modal for Adding Professional -->
+<div id="add-pro-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-xl p-6 w-full max-w-md relative shadow-lg">
+        <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+        <h2 class="text-xl font-bold mb-4 text-gray-800">Add New Professional</h2>
+        <form id="add-pro-form" class="space-y-4">
+            <input type="text" id="pro-name" placeholder="Name" required class="w-full border p-2 rounded">
+            <input type="text" id="pro-title" placeholder="Title (e.g., Photographer)" required class="w-full border p-2 rounded">
+            <input type="text" id="pro-location" placeholder="Location (City)" required class="w-full border p-2 rounded">
+            <input type="number" id="pro-lat" step="any" placeholder="Latitude" required class="w-full border p-2 rounded">
+            <input type="number" id="pro-lng" step="any" placeholder="Longitude" required class="w-full border p-2 rounded">
+            <input type="number" id="pro-rating" step="0.1" placeholder="Rating (e.g., 4.8)" required class="w-full border p-2 rounded">
+            <textarea id="pro-bio" placeholder="Short Bio" required class="w-full border p-2 rounded"></textarea>
+            <input type="text" id="pro-skills" placeholder="Skills (comma separated)" required class="w-full border p-2 rounded">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Add Professional</button>
+        </form>
+    </div>
+</div>
+    
+
+   <div class="text-center mb-6">
+    <input id="search-bar" type="text" placeholder="Search by name, title, or location..." 
+        class="w-full md:w-1/2 border p-3 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+</div>
+
+    </header>
+
+    <!-- Main Content Sections -->
+    <main>
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-16 md:py-24 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight text-gray-900">
+                    Find and Book Local Creative Professionals.
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-600">
+                    Connect with videographers, editors, designers, and more for your college projects.
+                </p>
+                <a href="#professionals" class="inline-block mt-8 bg-blue-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-600 transition-colors shadow-md">
+                    Explore Professionals
+                </a>
+            </div>
+        </section>
+
+        <!-- How it Works Section -->
+        <section id="how-it-works" class="bg-white py-16 mt-16 md:py-24 md:mt-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                    How It Works
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center scroll-anim">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <h3 class="mt-4 text-xl font-semibold">1. Find Your Talent</h3>
+                        <p class="mt-2 text-gray-600">Search for professionals by skill or location. View their portfolios and reviews.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="mt-4 text-xl font-semibold">2. Book Your Service</h3>
+                        <p class="mt-2 text-gray-600">Securely book a professional through our platform. Coordinate details and schedule.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6v-2"></path></svg>
+                        </div>
+                        <h3 class="mt-4 text-xl font-semibold">3. Create & Collaborate</h3>
+                        <p class="mt-2 text-gray-600">Work with your professional to bring your vision to life. Enjoy the finished product!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Professionals Section -->
+        <section id="professionals" class="container mx-auto px-4 py-16 md:py-24">
+            <h2 class="text-2xl md:text-4xl font-bold text-center text-gray-900 mb-12 scroll-anim">
+                Our Featured Professionals
+            </h2>
+            <div id="professionals-grid" class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 scroll-anim">
+                <!-- Professional cards will be inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Google Maps Section -->
+        <section id="map-section" class="container mx-auto px-4 py-16 md:py-24">
+            <h2 class="text-2xl md:text-4xl font-bold text-center text-gray-900 mb-12 scroll-anim">
+                Find Professionals Near You
+            </h2>
+            <div class="scroll-anim p-4 bg-white rounded-2xl shadow-xl">
+                <div class="relative mb-6">
+                    <input id="pac-input" class="w-full rounded-full py-3 px-6 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Enter a location to find professionals...">
+                    <div id="autocomplete-results" class="absolute w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg z-10 hidden"></div>
+                </div>
+                <div id="map" class="w-full h-[600px] rounded-2xl"></div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="gradient-bg py-16 md:py-24 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold">Ready to Start Your Next Project?</h2>
+                <p class="mt-4 text-lg md:text-xl font-light max-w-2xl mx-auto">
+                    Whether you're looking for a professional or want to offer your services, CollabConnect is the place to be.
+                </p>
+                <a href="#" class="mt-8 inline-block bg-white text-blue-500 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-md">
+                    Get Started Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2k25 CollabConnect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for dynamic content and animations -->
+    <script>
+        const professionals = [
+            { name: "Abbas ", title: "Videographer", location: "Bengaluru", lat: 12.9716, lng: 77.5946, rating: 4.9, bio: "Experienced videographer specializing in corporate events and music videos.", skills: ["Videography", "Editing", "Motion Graphics"] },
+            { name: "Raghu ", title: "Graphic Designer", location: "Chennai", lat: 13.0827, lng: 80.2707, rating: 4.8, bio: "Creative designer with a passion for brand identity and digital art.", skills: ["Graphic Design", "Brand Identity", "UI/UX"] },
+            { name: "Ramaraju ", title: "painter", location: "Hyderabad", lat: 17.3850, lng: 78.4867, rating: 5.0, bio: "Fast and reliable paint for houses.", skills: ["Video Editing", "Color Grading", "Sound Design"] },
+            { name: "Shanu", title: "Photographer", location: "Mumbai", lat: 19.0760, lng: 72.8777, rating: 4.7, bio: "I capture the beauty in every moment. Specializing in portrait and product photography.", skills: ["Photography", "Retouching", "Studio Lighting"] },
+            { name: "Suresh ", title: "VFX Artist", location: "Pune", lat: 18.5204, lng: 73.8567, rating: 4.9, bio: "Bringing imagination to life with stunning visual effects. From simple cleanup to complex creations.", skills: ["VFX", "Compositing", "3D Animation"] },
+            { name: "Ganesh", title: "Sound Engineer", location: "Bengaluru", lat: 12.9716, lng: 77.5946, rating: 4.6, bio: "Expert in audio post-production for film and commercials. I ensure your project sounds as good as it looks.", skills: ["Sound Design", "Audio Mixing", "Foley"] }
+        ];
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-anim').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Function to create a professional card
+        const createProfessionalCard = (pro) => {
+            const card = document.createElement('div');
+            card.className = "pro-card bg-white p-6 rounded-2xl shadow-md transition-all duration-300 transform hover:scale-105";
+            card.innerHTML = `
+                <div class="flex items-center space-x-4">
+                    <img src="https://placehold.co/400x400/94A3B8/FFFFFF?text=${pro.name.split(' ')[0]}" alt="${pro.name}" class="w-16 h-16 rounded-full object-cover border-2 border-blue-500">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900">${pro.name}</h4>
+                        <p class="text-sm text-gray-500">${pro.title}</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center text-yellow-500">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.62-.921 1.902 0l1.24 3.823a1 1 0 00.95.69h4.01c.969 0 1.371 1.24.588 1.81l-3.25 2.36a1 1 0 00-.363 1.118l1.24 3.823c.3.921-.755 1.688-1.538 1.118l-3.25-2.36a1 1 0 00-1.175 0l-3.25 2.36c-.783.57-1.838-.197-1.538-1.118l1.24-3.823a1 1 0 00-.363-1.118L2.05 9.25c-.783-.57-.38-1.81.588-1.81h4.01a1 1 0 00.95-.69l1.24-3.823z"></path></svg>
+                    <span class="text-sm text-gray-700">${pro.rating}</span>
+                </div>
+                <p class="mt-4 text-sm text-gray-600 truncate">${pro.bio}</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    ${pro.skills.map(skill => `<span class="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">${skill}</span>`).join('')}
+                </div>
+                <a href="booking.html?name=${encodeURIComponent(pro.name)}&title=${encodeURIComponent(pro.title)}&location=${encodeURIComponent(pro.location)}" class="mt-6 w-full text-center block bg-blue-500 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-600 transition-colors">Book Now</a>
+            `;
+            return card;
+        };
+
+        // Render professionals on page load
+        const professionalsGrid = document.getElementById('professionals-grid');
+        window.onload = function() {
+            professionals.forEach(pro => {
+                professionalsGrid.appendChild(createProfessionalCard(pro));
+            });
+        };
+
+        // Google Maps Integration
+        let map, autocomplete, markers = [];
+
+        function initMap() {
+            const mapContainer = document.getElementById("map");
+            const mapOptions = {
+                center: { lat: 12.9716, lng: 77.5946 }, // Centered on Bengaluru
+                zoom: 8,
+            };
+            map = new google.maps.Map(mapContainer, mapOptions);
+
+            // Add markers for each professional
+            professionals.forEach(pro => {
+                const marker = new google.maps.Marker({
+                    position: { lat: pro.lat, lng: pro.lng },
+                    map: map,
+                    title: pro.name
+                });
+                markers.push(marker);
+            });
+
+            // Places Autocomplete
+            const input = document.getElementById("pac-input");
+            autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo("bounds", map);
+
+            autocomplete.addListener("place_changed", () => {
+                const place = autocomplete.getPlace();
+                if (!place.geometry || !place.geometry.location) {
+                    window.alert("No details available for input: '" + place.name + "'");
+                    return;
+                }
+
+                // Center the map on the selected place
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(12);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

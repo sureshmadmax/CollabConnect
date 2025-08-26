@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Professional | CollabConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow sticky top-0 z-50 rounded-b-xl">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold text-gray-900">CollabConnect</a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-gray-600 hover:text-blue-500 transition-colors">Professionals</a>
+                <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-600 transition-colors">Join as a Pro</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full py-4 px-4 text-center">
+            <a href="index.html" class="block py-2 text-gray-600 hover:text-blue-500">Professionals</a>
+            <a href="#" class="block py-2 mt-2 bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-600">Join as a Pro</a>
+        </div>
+    </header>
+
+    <!-- Booking Form Section -->
+    <main class="py-16 md:py-24">
+        <section class="container mx-auto px-4">
+            <a href="index.html" class="flex items-center text-blue-500 mb-6 hover:underline scroll-anim">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Professionals
+            </a>
+            
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-8 lg:p-12 scroll-anim">
+                <div id="professional-info" class="text-center mb-8 pb-4 border-b border-gray-200">
+                    <!-- Professional's info will be loaded here -->
+                </div>
+
+                <h2 class="text-2xl font-bold text-gray-900 text-center mb-6">Book Your Service</h2>
+                <form id="booking-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="date" class="block text-sm font-medium text-gray-700">Preferred Date</label>
+                            <input type="date" id="date" name="date" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="project-details" class="block text-sm font-medium text-gray-700">Project Details</label>
+                            <textarea id="project-details" name="project-details" rows="4" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center">
+                       <!-- <button type="submit" class="bg-blue-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-600 transition-colors shadow-md">
+                            Submit Booking Request
+                        </button>-->
+                        <button type="submit" class="bg-blue-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-black-600 transition-colors shadow-md">Confirm Booking</button>
+<button type="button" class="bg-green-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-600 transition-colors shadow-md"id="whatsapp-btn" style="margin-top: 10px;">Send via WhatsApp</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 CollabConnect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for dynamic content and animations -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-anim').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Function to get query parameters from the URL
+        const getQueryParams = () => {
+            const params = {};
+            new URLSearchParams(window.location.search).forEach((value, key) => {
+                params[key] = value;
+            });
+            return params;
+        };
+
+        // Function to display the professional's information
+        const displayProfessionalInfo = () => {
+            const infoContainer = document.getElementById('professional-info');
+            const params = getQueryParams();
+            const { name, title, location } = params;
+
+            if (name && title && location) {
+                infoContainer.innerHTML = `
+                    <h1 class="text-3xl font-bold text-gray-900">Booking: ${name}</h1>
+                    <p class="text-lg text-gray-600 mt-1">${title} based in ${location}</p>
+                    <p class="text-sm text-gray-500 mt-2">Fill out the form below to send a booking request.</p>
+                `;
+            } else {
+                infoContainer.innerHTML = `
+                    <h1 class="text-3xl font-bold text-gray-900">Professional Not Selected</h1>
+                    <p class="text-lg text-gray-600 mt-1">Please go back and select a professional to book.</p>
+                `;
+            }
+        };
+
+        // Display professional info on page load
+        window.onload = displayProfessionalInfo;
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Professional - CollabConnect</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-container {
+      background: white;
+      padding: 25px;
+      width: 400px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #007BFF;
+      border: none;
+      color: white;
+      font-size: 16px;
+      margin-top: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .success-message {
+      text-align: center;
+      color: green;
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Add Professional</h2>
+    <form id="addProfessionalForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter name" required>
+
+      <label for="profession">Profession</label>
+      <select id="profession" name="profession" required>
+        <option value="">--Select--</option>
+        <option value="videographer">Videographer</option>
+        <option value="photographer">Photographer</option>
+        <option value="editor">Video Editor</option>
+        <option value="vfx">VFX Artist</option>
+        <option value="graphic">Graphic Designer</option>
+      </select>
+ <label for="professional-phone">Phone Number (International Format, e.g., +919347871134)</label>
+    <input type="tel" id="professional-phone" name="phone" required>
+      <label for="skills">Skills</label>
+      <textarea id="skills" name="skills" rows="3" placeholder="e.g., Premiere Pro, Photoshop" required></textarea>
+
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" placeholder="Hyderabad, India" required>
+
+      <label for="portfolio">Portfolio Link</label>
+      <input type="url" id="portfolio" name="portfolio" placeholder="https://yourportfolio.com" required>
+
+      <label for="price">Hourly Rate (₹)</label>
+      <input type="number" id="price" name="price" placeholder="500" required>
+
+      <button type="submit">Submit</button>
+      <div class="success-message" id="successMsg">Professional Added Successfully!</div>
+    </form>
+  </div>
+  <script>
+    document.getElementById('addProfessionalForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Simulate saving data (for backend later)
+      document.getElementById('successMsg').style.display = 'block';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
