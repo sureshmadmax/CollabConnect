@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Prime Plane | CollabConnect</title> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> <script src="https://cdn.tailwindcss.com"></script> <link rel="stylesheet" href="style.css"> <style> .pricing-table th, .pricing-table td { padding: 1rem; text-align: center; } </style> </head> <body class="bg-gray-50 text-gray-800"> <!-- Header --> <header class="bg-white shadow sticky top-0 z-50 rounded-b-xl"> <div class="container mx-auto px-4 py-4 flex items-center justify-between"> <a href="index.html" class="text-2xl font-bold text-gray-900">CollabConnect</a> <nav class="hidden md:flex items-center space-x-6"> <a href="index.html" class="text-gray-600 hover:text-blue-500 transition-colors">Professionals</a> <a href="prime.html" class="bg-blue-500 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-600 transition-colors">Prime Plane</a> </nav> <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg> </button> </div> <div id="mobile-menu" class="hidden md:hidden bg-white w-full py-4 px-4 text-center"> <a href="index.html" class="block py-2 text-gray-600 hover:text-blue-500">Professionals</a> <a href="prime.html" class="block py-2 mt-2 bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-600">Prime Plane</a> </div> </header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-24 md:py-32 text-center bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight text-gray-900 animate-in fade-in duration-1000">
+                Boost Your Career with <span class="text-blue-600">Prime Plane</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-gray-600 animate-in fade-in duration-1000 delay-100">
+                Unlock exclusive features, gain more visibility, and land more projects.
+            </p>
+            <a href="plans.html" class="inline-block mt-10 bg-blue-600 text-white px-10 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-lg animate-in fade-in duration-1000 delay-200">
+                Join Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 scroll-anim">
+            Prime Perks
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-anim">
+            <div class="bg-white p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition-transform duration-300">
+                <div class="text-blue-600 text-5xl mb-4">✨</div>
+                <h3 class="text-xl font-semibold">Priority Listing</h3>
+                <p class="mt-2 text-gray-600">Appear at the top of search results and get noticed by more clients.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition-transform duration-300 delay-100">
+                <div class="text-blue-600 text-5xl mb-4">🚀</div>
+                <h3 class="text-xl font-semibold">Unlimited Portfolio</h3>
+                <p class="mt-2 text-gray-600">Showcase all your work with no limits on portfolio uploads.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition-transform duration-300 delay-200">
+                <div class="text-blue-600 text-5xl mb-4">💬</div>
+                <h3 class="text-xl font-semibold">Premium Support</h3>
+                <p class="mt-2 text-gray-600">Get 24/7 access to our dedicated support team for any queries.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="bg-white py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 scroll-anim">
+                Compare Plans
+            </h2>
+            <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl scroll-anim">
+                <table class="w-full pricing-table">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="text-left font-bold text-gray-800">Features</th>
+                            <th class="font-bold text-gray-800">Free</th>
+                            <th class="font-bold text-blue-600">Prime Plane</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">Profile Listing</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Search Ranking</td>
+                            <td>Standard</td>
+                            <td>Priority Listing</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Portfolio Items</td>
+                            <td>5 Items</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Direct Booking</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Dedicated Support</td>
+                            <td>❌</td>
+                            <td>✅</td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="bg-gray-100">
+                        <tr>
+                            <td class="text-left"></td>
+                            <td><a href="index.html" class="inline-block bg-gray-300 text-gray-800 px-6 py-2 rounded-full font-semibold">Get Started</a></td>
+                            <td><a href="plans.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-full font-semibold">Join Now</a></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-gray-900 text-gray-300 py-8">
+    <div class="container mx-auto px-4 text-center">
+        <p>&copy; 2024 CollabConnect. All rights reserved.</p>
+    </div>
+</footer>
+<script src="app.js"></script>
